@@ -1,0 +1,53 @@
+@import '../../../../custom-palettes.scss';
+
+.inventual-pagination {
+    ul {
+        @apply inline-flex;
+        @apply border-1;
+        @apply border-solid;
+        @apply border-gray-borderSeven;
+        li {
+            a {
+                @apply h-10;
+                @apply w-10;
+                @apply text-center;
+                @apply text-14;
+                @apply font-normal;
+                @apply text-gray;
+                @apply leading-40;
+                @apply inline-block;
+                @apply border-r-1;
+                @apply border-solid;
+                @apply border-gray-borderSeven;
+                &.active {
+                    @apply bg-blue;
+                    @apply border-blue;
+                    @apply text-white;
+                }
+            }
+            &:last-child {
+                a {
+                    @apply border-r-0;
+                }
+            }
+            .material-icons {
+                @apply text-15;
+                @apply leading-40;
+            }
+        }
+    }
+}
+.inventual-pagination-sort {
+    @include inventualSelectFieldStyle;
+    .mat-select-arrow-wrapper {
+        transform: translateY(-1px);
+    }
+    .mat-form-field-appearance-legacy .mat-form-field-infix {
+        padding-top: 11px;
+    }
+}
+.inventual-pagination-sort .inventual-select-field-style .mat-form-field-flex {
+    @apply bg-white;
+    @apply h-10;
+    @apply px-3;
+}

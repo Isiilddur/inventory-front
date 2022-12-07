@@ -1,0 +1,202 @@
+<div class="inventual-content-area px-7">
+  <div class="grid grid-cols-12 gap-x-5">
+    <div class="col-span-7 lg:col-span-12 md:col-span-12 sm:col-span-12">
+      <div class="inventual-possale-area bg-white p-7 rounded-8 mb-5">
+        <div class="grid grid-cols-12 gap-x-5 sm:gap-x-0">
+          <div class="col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-7 relative">
+              <div class="inventual-select-field-style mr-12">
+                <form [formGroup]="myControl">
+                  <mat-form-field>
+                    <input
+                      formControlName="client"
+                      matInput
+                      type="text"
+                      [matAutocomplete]="auto"
+                    />
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="sendTheNewValue($event)">
+                      <mat-option
+                        *ngFor="let client of filteredOptions"
+                        [value]="client.name"
+                        >{{ client.name }}</mat-option
+                      >
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </form>
+              </div>
+              <a
+                href="javascript:void(0)"
+                (click)="openDialogTwo()"
+                class="plus-btn absolute top-0 right-0 h-12 w-12 text-16 leading-48 bg-blue text-white text-center inline-block"
+                ><mat-icon>add</mat-icon></a
+              >
+            </div>
+          </div>
+
+          <div class="col-span-6 sm:col-span-12">
+            <div class="inventual-select-field mb-7">
+              <div class="inventual-select-field-style">
+                <mat-form-field>
+                  <mat-select
+                    class="block"
+                    [placeholder]="'Tienda'"
+                    [(ngModel)]="newOrder.storeId"
+                    (ngModelChange)="filterProducs(newOrder.storeId)"
+                  >
+                    <mat-option
+                      *ngFor="let store of stores | keyvalue"
+                      [value]="store.key"
+                      >{{ store.value }}</mat-option
+                    >
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-x-5 sm:gap-x-0">
+          <div class="col-span-12">
+            <div class="inventual-possale-product-area">
+              <div
+                class="inventual-possale-product-wrapper border-1 border-b-0 border-solid border-gray-borderThree"
+              >
+                <div
+                  class="inventual-possale-product-list bg-gray-borderThree h-10"
+                >
+                  <div class="inventual-possale-product-Products">
+                    <h5 class="text-15 font-semibold text-black">Productos</h5>
+                  </div>
+                  <div class="inventual-possale-product-batch">
+                    <h5 class="text-15 font-semibold text-black">Código</h5>
+                  </div>
+                  <div class="inventual-possale-product-price">
+                    <h5 class="text-15 font-semibold text-black">
+                      Precio Unitario
+                    </h5>
+                  </div>
+                  <div class="inventual-possale-product-qty">
+                    <h5 class="text-15 font-semibold text-black">Cantidad</h5>
+                  </div>
+                  <div class="inventual-possale-product-total">
+                    <h5 class="text-15 font-semibold text-black">Sub Total</h5>
+                  </div>
+                  <div class="inventual-possale-product-action"></div>
+                </div>
+                <div
+                  class="inventual-possale-product-list border-b-1 border-solid border-gray-borderThree custom-height-70"
+                  *ngFor="let item of newProducts; let indexOfelement = index"
+                >
+                  <div class="inventual-possale-product-Products">
+                    <span class="text-14 font-normal text-gray">{{
+                      item.name
+                    }}</span>
+                  </div>
+                  <div class="inventual-possale-product-batch">
+                    <span class="text-14 font-normal text-gray">{{
+                      item.id
+                    }}</span>
+                  </div>
+                  <div class="inventual-possale-product-price">
+                    <mat-form-field class="w-full" appearance="outline">
+                      <mat-icon matPrefix> attach_money</mat-icon>
+                      <input
+                        matInput
+                        [placeholder]="'Precio'"
+                        type="number"
+                        [(ngModel)]="newItems[indexOfelement].price"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="inventual-possale-product-qty">
+                    <mat-form-field class="w-full" appearance="outline">
+                      <mat-icon matPrefix> shopping_basket</mat-icon>
+                      <input
+                        matInput
+                        [placeholder]="'Peso'"
+                        type="number"
+                        [(ngModel)]="newItems[indexOfelement].quantity"
+                      />
+                    </mat-form-field>
+                  </div>
+                  <div class="inventual-possale-product-total">
+                    <span class="text-14 font-normal text-gray"
+                      >${{
+                        newItems[indexOfelement].quantity *
+                          newItems[indexOfelement].price
+                      }}</span
+                    >
+                  </div>
+                  <div class="inventual-possale-product-action">
+                    <a
+                      (click)="removeItem(indexOfelement)"
+                      class="product-delete-btn"
+                      ><mat-icon>clear</mat-icon></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="inventual-possale-total-area border-t-1 border-gray-borderFive border-solid pt-6 pb-1"
+            >
+              <h4
+                class="mb-7 text-20 h-12 leading-46 text-center font-bold text-black border-gray-borderFive border-1 border-solid rounded-5 bg-gray-bgTwo"
+              >
+                Grand Total : {{ "$" + (getTotal() | currency) }}
+              </h4>
+            </div>
+
+            <div
+              class="grid grid-cols-12 gap-x-8 xxl:gap-x-5 xl:gap-x-4 sm:gap-x-4"
+            >
+              <div class="col-span-4 sm:col-span-6">
+                <div class="inventual-possale-product-btn default-light-theme">
+                  <button mat-raised-button color="warn" (click)="resetAll()">
+                    Resetear Todo
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-span-8 sm:col-span-12">
+                <div
+                  class="inventual-possale-product-btn default-light-theme sm:mt-4"
+                >
+                  <button
+                    (click)="sendOrder()"
+                    mat-raised-button
+                    color="primary"
+                  >
+                    Crear Orden
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-5 lg:col-span-12 md:col-span-12 sm:col-span-12">
+      <div class="inventual-possale-tab-area bg-white p-7 rounded-8 mb-5">
+        <div class="inventual-possale-tab-menu">
+          <div class="grid grid-cols-12 gap-x-2.5">
+            <div
+              *ngFor="let product of productsFiltered"
+              id="{{ product.id }}"
+              class="col-span-4 xxl:col-span-6 xl:col-span-6 sm:col-span-6"
+            >
+              <a (click)="addProduct(product)">
+                <div class="inventual-possale-tab-product text-center mt-2.5">
+                  <div class="inventual-possale-tab-product-text mt-2.5">
+                    <h5>{{ product.name }}</h5>
+                    <span>{{ categories.get(product.categoryId) }}</span
+                    ><br />
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

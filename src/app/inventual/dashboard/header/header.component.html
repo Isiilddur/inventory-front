@@ -1,0 +1,10 @@
+
+  <div class="inventual-header-content flex items-center justify-end custom-height-70">
+    <div><button (click)="logout()" mat-button mat-raised-button color="primary">Cerrar Sesión</button></div>
+  </div>
+
+<div class="inventual-header-overlay" (click)="shortmenu()" [class.shortmenu-enable]="menuShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="notifydropdown()" [class.notifydropdown-enable]="notifyShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="emaildropdown()" [class.emaildropdown-enable]="emailShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="langdropdown()" [class.langmenu-enable]="langShortcutActive"></div>
+<div class="inventual-header-overlay" (click)="prodropdown()" [class.promenu-enable]="proShortcutActive"></div>

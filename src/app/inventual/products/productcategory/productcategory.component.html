@@ -1,0 +1,115 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-20 text-black font-bold mb-3">Categoría</h5>
+                <div class="inventual-breadcrumb-area-inner-wrap">
+                    <span class="text-14 text-gray font-normal inline-block mr-2">Producto</span>
+                    <span class="text-14 text-gray font-normal inline-block mr-2">></span>
+                    <span class="text-14 text-gray font-normal inline-block mr-2">Categoría</span>
+                </div>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <h4 class="text-20 text-black font-bold mb-10">Categorías de Productos</h4>
+               <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                   <div class="col-span-3 md:col-span-12 sm:col-span-12">
+                       <div class="inventual-unit-content">
+                        <div class="inventual-select-field mb-7">
+                          <h5 class="text-15 text-black font-semibold mb-3">Nueva categoría</h5>
+                          <div class="inventual-input-field-style">
+                            <mat-form-field class="w-full" >
+                              <input matInput placeholder="Nombre de Categoria" [(ngModel)]="newCategoryName">
+                            </mat-form-field>
+                          </div>
+                        </div>
+                       <div class="inventual-managesale-top-btn default-light-theme mb-7">
+                         <button mat-raised-button color="primary" class="mb-1" (click)="createCategory()">
+                            Crear categoría
+                         </button>
+                       </div>
+                       </div>
+                   </div>
+                   <div class="col-span-9 md:col-span-12 sm:col-span-12">
+                    <div class="inventual-managesale-table-inner">
+                        <div class="inventual-managesale-table-inner-wrapper border-1 border-solid border-gray-borderThree border-b-0">
+                            <div class="inventual-managesale-table-list flex border-b-1 border-solid border-gray-borderThree h-12">
+                                <div class="inventual-managesale-table-name">
+                                    <h5>Nombre</h5>
+                                </div>
+                                <div class="inventual-managesale-table-name">
+                                    <h5>Estado</h5>
+                                </div>
+                                <div class="inventual-managesale-table-action">
+                                    <h5>Acción</h5>
+                                </div>
+                            </div>
+                            <div *ngFor="let category of categories" class="inventual-managesale-table-list flex border-b-1 border-solid border-gray-borderThree h-20">
+                            
+                                <div class="inventual-managesale-table-name">
+                                    <span>{{category.name}}</span>
+                                </div>
+                                
+                                <div class="inventual-managesale-table-name">
+                                    <span>{{category.active ? 'Activa':'Desactivada'}}</span>                                   
+                                </div>
+                                <div class="inventual-managesale-table-action">
+                                    <button
+                                      mat-icon-button
+                                      [matMenuTriggerFor]="beforeMenu"
+                                      class="common-action-menu-style"
+                                      aria-label="Example icon-button with a menu"
+                                    >
+                                      Action <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                      <button mat-menu-item (click)="deleteCategory(category.id)">
+                                        <img
+                                          src="../../../../../assets/img/icon/action-6.png"
+                                          alt="icon not found"
+                                        />
+                                        <span>Delete</span>
+                                      </button>
+                                    </mat-menu>
+                                  </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inventual-pagination pt-0.5 mt-7 text-right sm:text-center">
+                        <ul>
+                            <li><a href="javascript:void(0)"><mat-icon>arrow_back_ios</mat-icon></a></li>
+                            <li><a href="javascript:void(0)" class="active">01</a></li>
+                            <li><a href="javascript:void(0)">02</a></li>
+                            <li><a href="javascript:void(0)">03</a></li>
+                            <li><a href="javascript:void(0)">04</a></li>
+                            <li><a href="javascript:void(0)"><mat-icon>arrow_forward_ios</mat-icon></a></li>
+                        </ul>
+                    </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>

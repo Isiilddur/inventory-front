@@ -1,0 +1,54 @@
+@import '../../../../custom-palettes.scss';
+
+.inventual-dashboard-supplier-wrapper {
+    .inventual-dashboard-supplier-list-sl {
+        width: 50px;
+        min-width: 50px;
+        @apply text-center;
+        @apply flex;
+        @apply justify-center;
+        @apply items-center;
+        @apply flex-col;
+        @apply h-full;
+        @media (max-width: 767px) {
+            width: 35px;
+            min-width: 35px;
+          }
+    }
+    .inventual-dashboard-supplier-list-name {
+        width: 250px;
+        min-width: 250px;
+        @apply flex;
+        @apply justify-center;
+        @apply flex-col;
+        @apply h-full;
+        @media (min-width: 1401px) and (max-width: 1600px) {
+            width: 145px;
+            min-width: 145px;
+          }
+          @media (min-width: 992px) and (max-width: 1200px) {
+            width: 145px;
+            min-width: 145px;
+          }
+          @media (max-width: 767px) {
+            width: 125px;
+            min-width: 125px;
+            @apply pl-2.5;
+          }
+    }
+    .inventual-dashboard-supplier-list-amount {
+        width: 110px;
+        min-width: 110px;
+        @apply text-center;
+        @apply text-center;
+        @apply flex;
+        @apply justify-center;
+        @apply items-center;
+        @apply flex-col;
+        @apply h-full;
+        @media (max-width: 767px) {
+            width: 90px;
+            min-width: 90px;
+          }
+    }
+}

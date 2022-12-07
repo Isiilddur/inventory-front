@@ -1,0 +1,136 @@
+<div class="inventual-dashboard-area">
+  <div
+    class="inventual-dashboard-sidebar"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div
+      class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8"
+    >
+      <app-menu></app-menu>
+    </div>
+    <div
+      class="inventual-menu-overlay"
+      (click)="myfunction()"
+      [class.sidebar-enable]="menuSidebarActive"
+    ></div>
+  </div>
+  <div
+    class="inventual-dashboard-main"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-area">
+      <div
+        class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border"
+      >
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="inventual-breadcrumb-area-inner px-0.5">
+        <div class="inventual-breadcrumb-area-inner-wrap">
+          <span class="text-14 text-gray font-normal inline-block mr-2"
+            >Producto</span
+          >
+          <span class="text-14 text-gray font-normal inline-block mr-2">></span>
+          <span class="text-14 text-gray font-normal inline-block mr-2"
+            >Añadir Productos</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="inventual-content-area px-7">
+      <div
+        class="inventual-unit-area bg-white p-7 custom-shadow rounded-8 mb-5"
+      >
+        <h4 class="text-20 text-black font-bold mb-10">Añadir Productos</h4>
+        <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+          <div class="col-span-9 lg:col-span-8 sm:col-span-12 md:col-span-12">
+            <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+              <div
+                class="col-span-8 lg:col-span-6 md:col-span-6 sm:col-span-12"
+              >
+                <div class="inventual-select-field mb-7">
+                  <h5 class="text-15 text-black font-semibold mb-3">Nombre *</h5>
+                  <div class="inventual-input-field-style">
+                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                      <mat-label class="hidden">Nombre de producto *</mat-label>
+                      <input matInput placeholder="Nombre" [(ngModel)]="newProduct.name" required="true"/>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12"
+              >
+                <div class="inventual-select-field mb-5">
+                  <h5 class="text-15 text-black font-semibold mb-3">
+                    Categoría *
+                  </h5>
+                  <div class="inventual-select-field-style">
+                    <mat-form-field>
+                      <mat-select
+                        class="block"
+                        [placeholder]="'Selecciona Categoría'"
+                        [(ngModel)]="selectedCategory"
+                      >
+                        <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12"
+              >
+                <div class="inventual-select-field mb-7">
+                  <h5 class="text-15 text-black font-semibold mb-3">
+                    Codigo de Producto
+                  </h5>
+                  <div class="inventual-input-field-style">
+                    <mat-form-field class="w-full" [floatLabel]="'always'">
+                      <mat-label class="hidden">Opcional</mat-label>
+                      <input matInput [(ngModel)]="newProduct.id" [placeholder]="'40e2c09a-8ec7-4466-9bd3-a4e9e90b37d0'" />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12"
+              >
+                <div class="inventual-select-field mb-5">
+                  <h5 class="text-15 text-black font-semibold mb-3">Tienda *</h5>
+                  <div class="inventual-select-field-style">
+                    <mat-form-field>
+                      <mat-select class="block" placeholder="Selecciona Tienda" [(ngModel)]="selectedStore" >
+                        <mat-option *ngFor="let store of stores" [value]="store.id">{{store.name}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>                   
+            </div>
+            <div
+                class="col-span-4 lg:col-span-6 md:col-span-6 sm:col-span-12">
+  
+                <div class="inventual-managesale-top-btn default-light-theme">
+                  <button mat-raised-button color="primary" (click)="createProduct()">Crear</button>
+                </div>
+              </div>
+          </div>
+          <div class="inventual-add-product-content"></div>
+        </div>
+        <div class="inventual-copyright-area">
+          <app-copyright></app-copyright>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

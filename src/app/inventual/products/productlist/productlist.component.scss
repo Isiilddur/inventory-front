@@ -1,0 +1,247 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+
+.inventual-manageproduct-top-btn {
+	.mat-raised-button {
+		font-size: 16px !important;
+		font-weight: 700 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+		@apply sm:mb-1;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+}
+
+//inventual header searchbar
+@include inventualHeaderSearch;
+
+//inventual header searchbar action
+@include inventualHeaderSearchAction;
+
+.inventual-manageproduct-table-checkbox,
+.inventual-manageproduct-table-sl,
+.inventual-manageproduct-table-image,
+.inventual-manageproduct-table-name,
+.inventual-manageproduct-table-code,
+.inventual-manageproduct-table-category,
+.inventual-manageproduct-table-subcategory,
+.inventual-manageproduct-table-brand,
+.inventual-manageproduct-table-unit,
+.inventual-manageproduct-table-variant,
+.inventual-manageproduct-table-stock,
+.inventual-manageproduct-table-price,
+.inventual-manageproduct-table-action {
+	@apply flex;
+	@apply flex-col;
+	@apply justify-center;
+	& h5 {
+		@apply text-15;
+		@apply font-semibold;
+		@apply text-black;
+	}
+	& span {
+		@apply text-14;
+		@apply font-normal;
+		@apply text-gray;
+	}
+}
+.inventual-manageproduct-table-checkbox {
+	min-width: 70px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 50px;
+		width: 4%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 50px;
+		width: 4%;
+	}
+}
+.inventual-manageproduct-table-sl {
+	min-width: 65px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 40px;
+		width: 3%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 40px;
+		width: 3%;
+	}
+}
+.inventual-manageproduct-table-image {
+	min-width: 100px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 70px;
+		width: 6%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 70px;
+		width: 6%;
+	}
+}
+.inventual-manageproduct-table-name {
+	min-width: 180px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 150px;
+		width: 12.5%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 150px;
+		width: 12.5%;
+	}
+}
+.inventual-manageproduct-table-code {
+	min-width: 120px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 100px;
+		width: 12.5%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 100px;
+		width: 12.5%;
+	}
+}
+.inventual-manageproduct-table-category {
+	min-width: 110px;
+	width: 17.5%;
+}
+.inventual-manageproduct-table-subcategory {
+	min-width: 140px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		min-width: 120px;
+		width: 9%;
+	}
+	@media (max-width: 1600px) {
+		min-width: 120px;
+		width: 9%;
+	}
+}
+.inventual-manageproduct-table-brand {
+	min-width: 130px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 12.5%;
+		min-width: 105px;
+	}
+	@media (max-width: 1600px) {
+		width: 12.5%;
+		min-width: 105px;
+	}
+}
+.inventual-manageproduct-table-unit {
+	min-width: 110px;
+	width: 12.5%;
+}
+.inventual-manageproduct-table-variant {
+	min-width: 100px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 7%;
+		min-width: 70px;
+	}
+	@media (max-width: 1600px) {
+		width: 7%;
+		min-width: 70px;
+	}
+}
+.inventual-manageproduct-table-stock {
+	min-width: 85px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 12.5%;
+		min-width: 65px;
+	}
+	@media (max-width: 1600px) {
+		width: 12.5%;
+		min-width: 65px;
+	}
+}
+.inventual-manageproduct-table-price {
+	min-width: 125px;
+	width: 17.5%;
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 12.5%;
+		min-width: 90px;
+	}
+	@media (max-width: 1600px) {
+		width: 12.5%;
+		min-width: 90px;
+	}
+}
+
+.inventual-manageproduct-table-image-inner {
+    @apply inline-block;
+    @apply h-12;
+    @apply w-12;
+    @apply bg-gray-bgThree;
+    @apply rounded-5;
+    @apply p-2;
+}
+
+@include commonActionMenuStyle;
+
+.inventual-manageproduct-table-checkbox {
+	.mat-checkbox-layout {
+		@apply ml-4;
+	}
+	.mat-checkbox-frame {
+		border-color: #CBCED4 !important;
+	}
+	.mat-checkbox {
+		@apply flex;
+	}
+}
+
+.inventual-manageproduct-table-inner {
+	@media (max-width: 1600px) {
+		overflow-x: auto;
+		scrollbar-height: thin;
+	}
+}
+.inventual-manageproduct-table-inner-wrapper {
+	@media (max-width: 1600px) {
+		width: 1225px;
+        min-width: 100%;
+		scrollbar-height: thin;
+	}
+}
+
+.inventual-manageproduct-table-area{
+	min-width: 125px;
+	width: 100%;
+	justify-content: center;
+	align-self: center;
+	align-content: center;
+
+	@media (min-width: 1601px) and (max-width: 1900px) {
+		width: 12.5%;
+		min-width: 90px;
+	}
+	@media (max-width: 1600px) {
+		width: 12.5%;
+		min-width: 90px;
+	}
+}
+

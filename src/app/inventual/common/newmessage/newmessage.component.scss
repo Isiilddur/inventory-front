@@ -1,0 +1,186 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Input field style
+@include inventualInputFieldStyle;
+
+.inventual-notification-text {
+    width: calc(100% - 90px);
+}
+.inventual-notification {
+    @include transition;
+    &:hover {
+        @apply bg-white;
+    }
+}
+.inventual-notification-feedback {
+    .mat-raised-button {
+		font-size: 15px !important;
+		font-weight: 600 !important;
+		color: #616161 !important;
+		border-radius: 5px !important;
+		height: 40px !important;
+		line-height: 38px !important;
+		padding: 0px 20px !important;
+		margin-right: 10px !important;
+        border: 1px solid #EFF0F2;
+        background: none !important;
+		@apply sm:mb-1;
+        &:hover {
+            background: #2C6AE5 !important;
+            color: #fff !important;
+            border-color: #2C6AE5 !important;
+        }
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-1.5;
+        font-size: 21px;
+	}
+}
+.inventual-newmessage-wrapper {
+	button {
+		display: block;
+		position: relative;
+		width: 100%;
+		font-size: 16px;
+		font-weight: 600;
+		@apply text-black;
+		text-align: left;
+		height: 48px;
+		line-height: 45px;
+		padding: 0px 14px;
+		border-radius: 5px;
+		.mat-icon {
+			height: 15px !important;
+			width: 15px !important;
+			display: inline;
+			font-size: 20px !important;
+			transform: translateY(4px);
+			display: inline-block;
+			margin-right: 8px;
+			color: #B8C1CF;
+			line-height: 0px !important;
+		}
+		span {
+			float: right;
+		}
+		&:hover {
+			@apply bg-gray-bgFour;
+			@apply text-blue;
+			.mat-icon {
+				@apply text-blue;
+			}
+		}
+	}
+	.inventual-input-field-style textarea,
+	.NgxEditor__Content {
+		@apply border-1;
+		@apply border-solid;
+		@apply border-gray-borderThree;
+		@apply px-5;
+		@apply py-2.5;
+		@apply rounded-3;
+		@apply outline-none;
+		@apply block;
+		@apply text-14;
+		@apply leading-24;
+		@apply text-gray;
+		@apply font-primary;
+		@apply font-normal;
+		@apply w-full;
+		@apply bg-gray-bg;
+		@include transition;
+		height: 400px;
+		&:focus {
+			@apply bg-white;
+		}
+	}
+	.inventual-input-field-style textarea,
+	.NgxEditor__Content,
+	.NgxEditor__Content p {
+		&::-moz-placeholder,
+		&::placeholder {
+			@apply text-gray;
+			@apply opacity-70;
+			@apply font-primary;
+			@apply font-normal;
+		}
+	}
+}
+.inventual-manageproduct-top-btn {
+	.mat-raised-button {
+		font-size: 16px !important;
+		font-weight: 700 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+		@apply sm:mb-1;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+}
+.inventual-newmessage-wrapper {
+	.inventual-newmessage-nav {
+		width: 210px;
+		margin-right: 50px;
+		@media (max-width: 767px) {
+            @apply w-full;
+			@apply mr-0;
+			@apply mb-8;
+        }
+	}
+	.inventual-newmessage-content {
+		width: calc(100% - 260px);
+		@media (max-width: 767px) {
+            @apply w-full;
+        }
+	}
+	@media (max-width: 767px) {
+		@apply block;
+	}
+}
+.inventual-newmessage-send-btn button {
+	width: inherit !important;
+}
+
+.NgxEditor {
+	background: none !important;
+	color: inherit !important;
+	background-clip: padding-box !important;
+	border-radius: inherit !important;
+	border: none !important;
+	position: relative !important;
+}
+.NgxEditor__MenuBar {
+	background-color: #fcfcfc !important;
+	border: 1px solid #EFF0F2 !important;
+}
+.NgxEditor__Popup .NgxEditor__Popup--FormGroup input[type="text"], .NgxEditor__Popup .NgxEditor__Popup--FormGroup input[type="url"],
+.NgxEditor__Popup--Col .ng-pristine {
+	padding: 2px 4px;
+	background-color: #fcfcfc !important;
+	border: 1px solid #EFF0F2 !important;
+}

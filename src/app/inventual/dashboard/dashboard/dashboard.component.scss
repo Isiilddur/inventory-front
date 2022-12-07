@@ -1,0 +1,101 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+
+.inventual-dashboard-main.sidebar-enable {
+    .apexcharts-canvas {
+        width: 100% !important;
+    }
+}
+.inventual-bar-chart h5 {
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 25px;
+}
+.common-blue-badge {
+    @apply h-5;
+    @apply px-2.5;
+    @apply bg-blue;
+    @apply rounded-3;
+    @apply inline-block;
+    @apply text-white;
+    @apply text-11;
+    @apply font-bold;
+    @apply leading-20;
+}
+
+.inventual-dashboard-sidebar {
+    @media (min-width: 1201px) and (max-width: 1900px) {
+      margin-left: -315px;
+    }
+    @media (max-width: 1200px) {
+      margin-left: -300px;
+    }
+    .inventual-header-bar-responsive {
+        @media (max-width: 1900px) {
+            right: -56px;
+          }
+      @media (max-width: 1200px) {
+        right: -40px;
+      }
+    }
+  }
+  .inventual-dashboard-main {
+    @media (min-width: 1201px) and (max-width: 1900px) {
+      @apply ml-0;
+    }
+    @media (max-width: 1200px) {
+      @apply ml-0;
+    }
+  }
+  .inventual-dashboard-sidebar.sidebar-enable {
+    @media (min-width: 1201px) and (max-width: 1900px) {
+      @apply ml-0;
+    }
+    @media (max-width: 1200px) {
+      @apply ml-0;
+    }
+  }
+
+.inventual-menu-overlay-dashboard.sidebar-enable {
+  @media (max-width: 1900px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 10;
+  }
+}
+
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+

@@ -1,0 +1,59 @@
+<div class="inventual-dashboard-area">
+  <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+      <app-menu></app-menu>
+    </div>
+    <div class="inventual-menu-overlay inventual-menu-overlay-dashboard" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+  <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-area">
+      <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="inventual-breadcrumb-area-inner px-0.5">
+        <h5 class="text-20 text-black font-bold mb-3">Dashboard </h5>
+      </div>
+    </div>
+    <div class="inventual-content-area px-7">
+      <div class="grid grid-cols-12 gap-x-5">
+        <div class="col-span-12 xxl:col-span-12 example-button-row">
+          <button class="col-span-4 xxl:col-span-4 mr-5" mat-raised-button (click)="changeRange('')" color="warn">Hoy</button>
+          <button class="col-span-4 xxl:col-span-4 mr-5" mat-raised-button (click)="changeRange('WEEK')" color="primary">Semana</button>
+        </div>
+        <div class="col-span-12 mt-10">
+          <h1 class="text-20 text-black font-bold mb-3">Ingresos por Categoría</h1>
+
+          <div class="invention-quickreport-area pl-0.5 grid grid-cols-12 gap-x-5 col-span-3"  >
+            <app-category-report *ngFor="let category of categoriesData" class="col-span-3 xl:block lg:block md:block" [total]="category._sum.price" [name]="categories.get(category.categoryId)"></app-category-report>
+            
+              <div class="col-span-12 xl:block lg:block md:block items-center" *ngIf="categoriesData.length == 0" >
+                <h1 class="text-15 text-blue font-bold mb-3 ">No hay datos aun.</h1>
+              </div>
+          </div>
+          <hr>
+          <h1 class="text-20 text-black font-bold mb-3">Ingresos Totales</h1>
+
+          <div class="invention-quickreport-area pl-0.5 mt-10" *ngFor="let store of stores" >
+            <h5>{{store.name}}</h5>
+            <app-quickview [idStore]="store.id" [dateRange]="range"></app-quickview>
+          </div>
+          
+        
+        </div>
+      
+      </div>
+    </div>
+    <div class="inventual-copyright-area">
+      <app-copyright></app-copyright>
+    </div>
+  </div>
+</div>

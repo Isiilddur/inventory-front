@@ -1,0 +1,118 @@
+<div class="inventual-managesale-table-area" >
+    <div class="inventual-managesale-table-inner">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="announceSortChange($event)"
+        class="mat-elevation-z8"
+      >
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by id"
+          >
+            ID
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.id }}
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by name"
+          >
+            Cliente
+          </th>
+          <td mat-cell *matCellDef="let element">{{ clients.get( element.clientId) }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="status">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by status"
+          >
+            Status
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              ><figure
+                [class]="
+                  'text-12 font-semibold leading-20 text-white px-2.5 h-5 rounded-3 inline-block ' +
+                  colorStatus[element.status]
+                "
+              >
+                {{ element.status }}
+              </figure></span
+            >
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="total">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by total"
+          >
+            Total
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.total | currency}}</td>
+        </ng-container>
+        <ng-container matColumnDef="payed">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by total"
+          >
+            Pagado
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.payed | currency}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by date"
+          >
+            Fecha
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.date | date  }}</td>
+        </ng-container>
+        <ng-container matColumnDef="pagos">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+          >
+            Pagos
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button (click)="addPayment(element.id, element.clientId)" mat-raised-button color="primary">Agregar Pago</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row  *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[10]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </div> 

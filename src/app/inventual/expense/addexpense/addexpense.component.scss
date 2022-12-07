@@ -1,0 +1,74 @@
+@import '../../../../custom-palettes.scss';
+
+.inventual-managesale-top-btn {
+	.mat-raised-button {
+		font-size: 16px !important;
+		font-weight: 700 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+		@apply sm:mb-1;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+}
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Select field style
+@include inventualSelectFieldStyle;
+// Input field style
+@include inventualInputFieldStyle;
+//calender field style
+@include inventualCalenderFieldStyle;
+
+.custom-height-70 {
+    height: 70px;
+    min-height: 70px;
+}
+
+.inventual-input-field-style textarea {
+	@apply h-12;
+	@apply leading-46;
+	@apply border-1;
+	@apply border-solid;
+	@apply border-gray-borderThree;
+	@apply px-5;
+	@apply rounded-3;
+	@apply outline-none;
+	@apply block;
+	@apply text-14;
+	@apply text-gray;
+	@apply font-primary;
+	@apply font-normal;
+	@apply w-full;
+	@apply bg-gray-bg;
+	@include transition;
+	&:focus {
+		@apply bg-white;
+	}
+    &::-moz-placeholder,
+	&::placeholder {
+		@apply text-gray;
+		@apply opacity-100;
+		@apply font-primary;
+		@apply font-normal;
+	}
+}
+.inventual-input-field-style textarea {
+	height: 120px;
+	@apply py-2.5;
+}

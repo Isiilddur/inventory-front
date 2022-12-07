@@ -1,0 +1,87 @@
+<div class="inventual-dashboard-area">
+  <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+      <app-menu></app-menu>
+    </div>
+    <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+  </div>
+  <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+    <div class="inventual-header-area">
+      <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border">
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-20 text-black font-bold mb-3">Agregar Cliente</h5>
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-addsupplier-area bg-white p-7 custom-shadow rounded-8 mb-5">
+             <h4 class="text-20 font-bold text-black mb-9">Crear Cliente</h4>
+             <div class="grid grid-cols-12 gap-x-7 sm:gap-x-0">
+                <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                 <div class="inventual-select-field mb-5">
+                   <h5 class="text-15 text-black font-semibold mb-3">Nombre</h5>
+                   <div class="inventual-input-field-style">
+                     <mat-form-field class="w-full" [floatLabel]="'always'">
+                       <mat-label class="hidden">Joseph Tylor</mat-label>
+                       <input matInput [placeholder]="'Juan Perez'" [(ngModel)]="newClient.name">
+                     </mat-form-field>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                 <div class="inventual-select-field mb-5">
+                   <h5 class="text-15 text-black font-semibold mb-3">Telefono</h5>
+                   <div class="inventual-input-field-style">
+                     <mat-form-field class="w-full" [floatLabel]="'always'">
+                       <mat-label class="hidden">55 12 34 56 78</mat-label>
+                       <input matInput placeholder="55 12 34 56 78" [(ngModel)]="newClient.phone">
+                     </mat-form-field>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                 <div class="inventual-select-field mb-5">
+                   <h5 class="text-15 text-black font-semibold mb-3">RFC</h5>
+                   <div class="inventual-input-field-style">
+                     <mat-form-field class="w-full" [floatLabel]="'always'">
+                       <mat-label class="hidden">ABCD123456RW0</mat-label>
+                       <input matInput placeholder="ABCD123456RW0" [(ngModel)]="newClient.rfc">
+                     </mat-form-field>
+                   </div>
+                 </div>
+               </div>
+               <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                 <div class="inventual-select-field mb-5">
+                   <h5 class="text-15 text-black font-semibold mb-3">Dirección</h5>
+                   <div class="inventual-input-field-style">
+                     <mat-form-field class="w-full" [floatLabel]="'always'">
+                       <mat-label class="hidden">New York</mat-label>
+                       <input matInput placeholder="Dirección" [(ngModel)]="newClient.address">
+                     </mat-form-field>
+                   </div>
+                 </div>
+               </div>
+              
+              <div class="col-span-12">
+                <div class="inventual-managesale-top-btn default-light-theme pt-2.5">
+                    <button mat-raised-button color="primary" (click)="createClient()">Crear</button>
+               </div>
+              </div>
+            </div>
+           </div>
+        </div>
+        <div class="inventual-copyright-area pt-28 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+  </div>

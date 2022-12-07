@@ -1,0 +1,81 @@
+@import '../../../../custom-palettes.scss';
+
+.inventual-menu-wrapper {
+    width: 315px;
+    min-width: 315px;
+    overflow-y: auto;
+    min-height: 100vh;
+    @apply top-0;
+    @apply left-0;
+    @apply absolute;
+    @include transition;
+    z-index: 91;
+    @media (max-width: 1199px) {
+		width: 300px;
+        min-width: 300px;
+	}
+}
+.inventual-menu {
+    & ul {
+        & li {
+            & a {
+                @apply text-15;
+                @apply font-semibold;
+                @apply text-black-light;
+                @apply w-full;
+                @apply px-5;
+                @apply py-4;
+                @apply rounded;
+                @apply block;
+                & .mat-icon {
+                    @apply text-right;
+                    @apply text-black-lightTwo;
+                    @apply text-20;
+                    @include lineHeightinherit;
+                    width: 13px !important;
+                }
+            }
+            &:hover > a {
+                @apply bg-gray-dark;
+            }
+            &.mm-active > .has-arrow[aria-expanded="true"] {
+                @apply bg-blue;
+                @apply text-white;
+                & path,
+                & rect {
+                    fill: #fff;
+                }
+            }
+            &.mm-active .mm-active > .has-arrow[aria-expanded="true"] {
+                @apply bg-transparent;
+                @apply text-black-light;
+                &:hover {
+                    @apply bg-gray-dark;
+                }
+            }
+            & path,
+            & rect {
+                fill: #2C6AE5;
+            }
+            & svg {
+                @apply w-7;
+                @apply mr-4;
+                height: 18px;
+                margin-top: -4px !important;
+                margin-left: -4px !important; 
+            }
+        }
+    }
+    .has-arrow[aria-expanded="true"] {
+        @apply bg-green;
+        &:hover {
+            @apply bg-green;
+        }
+      }
+      .mm-active .mm-show {
+          @apply px-2.5;
+      }
+      .mm-active .mm-show .mm-active .mm-show {
+          @apply px-5;
+      }
+}

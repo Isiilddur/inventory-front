@@ -1,0 +1,14 @@
+.inventual-dashboard-piechart {
+    .apexcharts-legend {
+        padding: 0px !important;
+    }
+    .apexcharts-legend-series {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+        @media (max-width: 575px) {
+            display: flex !important;
+            width: 50%;
+            padding-left: 28px !important;
+          }
+    }
+}

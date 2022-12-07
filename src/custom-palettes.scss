@@ -1,0 +1,767 @@
+@use '~@angular/material' as mat;
+@use "~@angular/material/theming" as theme;
+@include mat.core();
+
+$bt-primary-palette: (
+  50: #2C6AE5,
+  100: #2C6AE5,
+  200: #2C6AE5,
+  300: #2C6AE5,
+  400: #2C6AE5,
+  500: #2C6AE5,
+  600: #2C6AE5,
+  700: #2C6AE5,
+  800: #2C6AE5,
+  900: #2C6AE5,
+  contrast: (
+    50: theme.$dark-primary-text,
+    100: theme.$dark-primary-text,
+    200: theme.$dark-primary-text,
+    300: theme.$dark-primary-text,
+    400: theme.$light-primary-text,
+    500: theme.$light-primary-text,
+    600: theme.$light-primary-text,
+    700: theme.$light-primary-text,
+    800: theme.$light-primary-text,
+    900: theme.$light-primary-text
+  ),
+);
+
+$bt-accent-palette: (
+  50: #32C98D,
+  100: #32C98D,
+  200: #32C98D,
+  300: #32C98D,
+  400: #32C98D,
+  500: #32C98D,
+  600: #32C98D,
+  700: #32C98D,
+  800: #32C98D,
+  900: #32C98D,
+  contrast: (
+    50: theme.$dark-primary-text,
+    100: theme.$dark-primary-text,
+    200: theme.$dark-primary-text,
+    300: theme.$dark-primary-text,
+    400: theme.$dark-primary-text,
+    500: theme.$dark-primary-text,
+    600: theme.$dark-primary-text,
+    700: theme.$dark-primary-text,
+    800: theme.$light-primary-text,
+    900: theme.$light-primary-text
+  ),
+);
+
+$bt-warn-palette: (
+  50: #FF9720,
+  100: #FF9720,
+  200: #FF9720,
+  300: #FF9720,
+  400: #FF9720,
+  500: #FF9720,
+  600: #FF9720,
+  700: #FF9720,
+  800: #FF9720,
+  900: #FF9720,
+  contrast: (
+    50: theme.$dark-primary-text,
+    100: theme.$dark-primary-text,
+    200: theme.$dark-primary-text,
+    300: theme.$dark-primary-text,
+    400: theme.$light-primary-text,
+    500: theme.$light-primary-text,
+    600: theme.$light-primary-text,
+    700: theme.$light-primary-text,
+    800: theme.$light-primary-text,
+    900: theme.$light-primary-text
+  ),
+);
+
+$bt-primary: mat.define-palette($bt-primary-palette);
+$bt-accent: mat.define-palette($bt-accent-palette);
+$bt-warn: mat.define-palette($bt-warn-palette);
+
+$bt-theme: mat.define-light-theme((
+  color: (
+    primary: $bt-primary,
+    accent: $bt-accent,
+    warn: $bt-warn
+  ),
+  typography: mat.define-typography-config(
+      $font-family: "'Nunito Sans', sans-serif",
+  )
+));
+
+.default-light-theme {
+  @include mat.all-component-themes($bt-theme);
+}
+
+.bg-primary {
+  background: mat.get-color-from-palette($bt-primary);
+}
+.bg-accent {
+  background: mat.get-color-from-palette($bt-accent);
+}
+.primary {
+  color: mat.get-color-from-palette($bt-primary);
+}
+.accent {
+  color: mat.get-color-from-palette($bt-accent);
+}
+
+
+//login page banner width style
+@mixin loginBannerImg {
+  .account-default-area {
+    & .login-banner {
+      width: calc(50% + 50px);
+    }
+}
+}
+
+// height width inherit property
+@mixin heightInherit {
+  height: inherit;
+}
+@mixin widthInherit {
+  width: inherit;
+}
+@mixin transition {
+  transition: all linear 0.3s;
+}
+@mixin minWidthInherit {
+  min-width: inherit;
+}
+@mixin minHeightInherit {
+  min-height: inherit;
+}
+@mixin overflowInitial {
+  overflow: initial;
+}
+@mixin lineHeightinherit {
+  line-height: inherit;
+}
+@mixin radius50 {
+  border-radius: 50%;
+}
+@mixin padding($unit) {
+  padding: #{$unit}px;
+}
+@mixin paddingLeft($unit) {
+  padding-left: #{$unit}px;
+}
+@mixin paddingRight($unit) {
+  padding-right: #{$unit}px;
+}
+@mixin paddingTop($unit) {
+  padding-top: #{$unit}px;
+}
+@mixin paddingBottom($unit) {
+  padding-top: #{$unit}px;
+}
+@mixin paddingBottom($unit) {
+  padding-bottom: #{$unit}px;
+}
+@mixin padding($topBottom, $leftRight) {
+  padding-top: #{$topBottom}px;
+  padding-bottom: #{$topBottom}px;
+  padding-left: #{$leftRight}px;
+  padding-right: #{$leftRight}px;
+}
+@mixin margin($unit) {
+  margin: #{$unit}px;
+}
+@mixin marginLeft($unit) {
+  margin-left: #{$unit}px;
+}
+@mixin marginRight($unit) {
+  margin-right: #{$unit}px;
+}
+@mixin marginTop($unit) {
+  margin-top: #{$unit}px;
+}
+@mixin marginBottom($unit) {
+  margin-bottom: #{$unit}px;
+}
+@mixin margin($topBottom, $leftRight) {
+  margin-top: #{$topBottom}px;
+  margin-bottom: #{$topBottom}px;
+  margin-left: #{$leftRight}px;
+  margin-right: #{$leftRight}px;
+}
+@mixin paddingBottom($unit) {
+  padding-top: #{$unit}px;
+}
+
+
+//select field
+@mixin inventualSelectFieldStyle {
+.inventual-select-field-style {
+    & .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+        @apply hidden;
+    }
+    & .mat-form-field-hide-placeholder .mat-select-placeholder {
+        @apply hidden;
+    }
+    & .mat-form-field-appearance-legacy .mat-form-field-underline {
+        @apply hidden;
+    }
+    & .mat-form-field-flex {
+        @apply h-12;
+        @apply leading-46;
+        @apply border-1;
+        @apply border-solid;
+        @apply border-gray-borderThree;
+        @apply px-5;
+        @apply rounded-3;
+        @apply outline-none;
+        @apply block;
+        @apply text-14;
+        @apply text-gray;
+        @apply font-primary;
+        @apply font-normal;
+        @apply w-full;
+        @apply bg-gray-bg;
+    }
+    & .mat-form-field-infix {
+        @apply w-full;
+        @apply border-t-0;
+        @apply h-full;
+        @apply flex;
+        @apply items-center;
+    }
+    & .mat-form-field-wrapper,
+    & .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        @apply py-0;
+        @apply top-0;
+    }
+    & .mat-form-field {
+        @apply block;
+    }
+    & .mat-form-field-label-wrapper {
+        top: -4px;
+        @apply pt-0;
+    }
+    & .mat-select-arrow {
+        @apply text-black-lightTwo;
+    }
+    & .mat-select-value {
+        @apply text-gray;
+    }
+    & .mat-select-arrow {
+      @apply border-0;
+      @apply border-b-1;
+      @apply border-r-1;
+      @apply border-black-lightTwo;
+      @apply block;
+      @apply h-1.5;
+      @apply w-1.5;
+      @apply pointer-events-none;
+       -webkit-transform-origin: 66% 66%;
+      -ms-transform-origin: 66% 66%;
+      transform-origin: 66% 66%;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+      -webkit-transition: all 0.15s ease-in-out;
+      transition: all 0.15s ease-in-out;
+    }
+  }
+}
+
+//input field
+@mixin inventualInputFieldStyle {
+.inventual-input-field-style {
+    & .mat-form-field-appearance-legacy .mat-form-field-infix {
+        @apply p-0;
+    }
+    & input.mat-input-element {
+        @apply m-0;
+        @apply h-12;
+        @apply leading-46;
+        @apply border-1;
+        @apply border-solid;
+        @apply border-gray-borderThree;
+        @apply px-5;
+        @apply rounded-3;
+        @apply outline-none;
+        @apply block;
+        @apply text-14;
+        @apply text-gray;
+        @apply font-primary;
+        @apply font-normal;
+        @apply w-full;
+        @apply bg-gray-bg;
+        &:focus {
+          @apply bg-white;
+        }
+    }
+    & .mat-form-field-appearance-legacy .mat-form-field-underline {
+        @apply hidden;
+    }
+    & .mat-form-field-infix {
+        @apply border-0;
+    }
+    & .mat-form-field-label-wrapper {
+        @apply top-0;
+        @apply p-0;
+    }
+    & .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        @apply p-0;
+        @apply w-full;
+        @apply flex;
+    }
+    & .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+        @apply m-0;
+        @apply top-0;
+    }
+    & .mat-form-field {
+        @apply flex;
+    }
+  }
+}
+
+//product counter style
+@mixin productCounter {
+  & p {
+      @apply text-14;
+      @apply font-normal;
+      @apply text-gray;
+      @apply px-3;
+  }
+  & button {
+      height: 30px;
+      width: 30px;
+      border: 2px solid #C1D5FE;
+      @apply leading-26;
+      @apply inline-block;
+      @apply text-center;
+      @apply text-blue;
+      @apply rounded-3;
+      & .material-icons {
+          @apply text-16;
+          @apply leading-26;
+          transform: translateX(-2px);
+      }
+      &.active {
+          @apply bg-blue;
+          @apply text-white;
+          @apply border-blue;
+      }
+  }
+}
+
+//product delete btn
+@mixin productDeleteBtn {
+  .product-delete-btn {
+    @apply h-6;
+    @apply w-6;
+    @apply leading-23;
+    @apply text-center;
+    @apply inline-block;
+    @apply border-1;
+    @apply border-solid;
+    @apply rounded-3;
+    @apply border-red-dark;
+    & .material-icons {
+        @apply text-16;
+        @apply leading-22;
+        @apply text-red-dark;
+        transform: translateX(-1px);
+    }
+  }
+}
+
+@mixin inventualCalenderFieldStyle {
+  .inventual-calender-field-style {
+      & .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+          @apply hidden;
+      }
+      & .mat-form-field-hide-placeholder .mat-select-placeholder {
+          @apply hidden;
+      }
+      & .mat-form-field-appearance-legacy .mat-form-field-underline {
+          @apply hidden;
+      }
+      & .mat-form-field-flex {
+      @apply h-12;
+      @apply leading-46;
+      @apply border-1;
+      @apply border-solid;
+      @apply border-gray-borderThree;
+      @apply px-5;
+      @apply rounded-3;
+      @apply outline-none;
+      @apply block;
+      @apply text-14;
+      @apply text-gray;
+      @apply font-primary;
+      @apply font-normal;
+      @apply w-full;
+      @apply bg-gray-bg;
+      }
+      & .mat-form-field-infix {
+          @apply w-full;
+          @apply border-t-0;
+          @apply h-full;
+          @apply flex;
+          @apply items-center;
+      }
+      & .mat-form-field-wrapper,
+      & .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+          @apply py-0;
+          @apply top-0;
+      }
+      & .mat-form-field {
+          @apply block;
+      }
+      & .mat-form-field-label-wrapper {
+          top: -4px;
+          @apply pt-0;
+      }
+      & .mat-select-arrow {
+          @apply text-gray;
+      }
+      & .mat-select-value {
+          @apply text-gray;
+      }
+    & .mat-form-field-underline {
+      @apply hidden;
+    }
+    & .mat-form-field-suffix {
+          @apply absolute;
+          @apply top-3.5;
+          @apply right-5;
+      }
+    .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+      @include heightInherit;
+      @include widthInherit;
+    }
+    .mat-form-field-appearance-fill .mat-form-field-flex {
+      padding: 6px 20px 0px 20px;
+    }
+    svg {
+      display: block !important;
+    }
+  }
+  abbr[title] {
+    text-decoration:  none !important;
+  }
+  .mat-calendar-body-cell-content {
+    @apply rounded #{'!important'};
+  }
+  .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+  @apply border-blue-light #{'!important'};
+    @apply bg-blue-light #{'!important'};
+    @apply text-white #{'!important'};
+  }
+  .mat-calendar-body-selected {
+    @apply border-green #{'!important'};
+    @apply bg-green #{'!important'};
+  }
+}
+
+//checkbox design
+@mixin inventualCheckboxFieldStyle {
+    .inventual-checkbox-field-style input {
+      @apply p-0;
+      height: initial;
+      width: initial;
+      @apply mb-0;
+      @apply hidden;
+      @apply cursor-pointer;
+    }
+    .inventual-checkbox-field-style label {
+      @apply relative;
+      @apply cursor-pointer;
+      line-height: inherit;
+      @apply flex;
+    }
+    .inventual-checkbox-field-style label:before {
+      content:'';
+      -webkit-appearance: none;
+      @apply bg-transparent;
+      border: 1px solid #A4A4A4;
+      @apply p-2.5;
+      @apply inline-block;
+      @apply relative;
+      @apply align-middle;
+      @apply cursor-pointer;
+      @apply mr-3;
+      @apply rounded-3;
+    }
+    .inventual-checkbox-field-style input + label:after {
+      content: '';
+      @apply block;
+      @apply absolute;
+      top: 3px;
+      @apply left-2;
+      width: 7px;
+      height: 13px;
+      border: solid #a4a4a4;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    .inventual-checkbox-field-style input:checked + label:before {
+        @apply bg-blue;
+        @apply border-blue;
+    }
+    .inventual-checkbox-field-style input:checked + label:after {
+      @apply border-white;
+  }
+}
+
+//popup close icon
+@mixin inventualPopupClose {
+  .inventual-popup-header-close a {
+    @apply h-9;
+    @apply w-9;
+    @apply leading-35;
+    @apply text-center;
+    @apply inline-block;
+    @apply border-1;
+    @apply border-solid;
+    @apply rounded-3;
+    @apply border-red-dark;
+    & .material-icons {
+        @apply text-20;
+        @apply leading-34;
+        @apply text-red-dark;
+        transform: translateX(-1px);
+    }
+  }
+}
+
+//popup material-btn
+@mixin materialPopupBtn {
+  .mat-raised-button {
+		font-size: 16px !important;
+		font-weight: 700 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 16px !important;
+        width: 100% !important;
+        @apply text-center;
+	}
+}
+
+//popup common style
+@mixin popupCommonStyle {
+  .mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
+  }
+  .cdk-overlay-dark-backdrop {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .mat-dialog-content {
+    max-height: 90vh;
+    max-width: 90vw;
+  }
+  
+}
+
+//common action menu style
+@mixin commonActionMenuStyle {
+  .mat-menu-item img {
+    @apply w-4;
+    @apply mr-3;
+  }
+  .mat-menu-item span {
+    @apply text-black;
+  }
+  .mat-menu-item:hover:not([disabled]) {
+    background: #F6F9FF;
+  }
+  .mat-menu-item {
+    height: 40px !important;
+    line-height: 40px !important;
+  }
+  .common-action-menu-style {
+    color: red !important;
+    height: 36px !important;
+    border: 1px solid #C1D5FE !important;
+    border-radius: 3px !important;
+    padding: 0px 10px !important;
+    width: inherit !important;
+    line-height: 36px !important;
+    span {
+      @apply text-blue;
+    }
+    .mat-icon {
+      width: 18px !important;
+    }
+  }
+}
+
+//inventual header searchbar
+@mixin inventualHeaderSearch {
+  .inventual-table-header-search {
+    & input {
+      @apply h-10;
+      @apply w-full;
+      @apply block;
+      @apply rounded-3;
+      @apply border-1;
+      @apply border-solid;
+      @apply border-gray-borderThree;
+      @apply pl-11;
+      @apply pr-4;
+      @apply text-14;
+      @apply font-normal;
+      @apply font-primary;
+      @apply text-gray;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    & span {
+      @apply absolute;
+      @apply top-2.5;
+      @apply left-3.5;
+      color: #B7B7B7;
+      @apply text-20;
+      @apply inline-block;
+    }
+  }
+  .inventual-input-field-file label {
+    @apply h-12;
+    line-height: 48px !important;
+    @apply border-0;
+    @apply rounded-0;
+    @apply outline-none;
+    @apply block;
+    @apply w-full;
+    @apply bg-transparent;
+    @include transition;
+    @apply cursor-pointer;
+    &:focus {
+      @apply bg-white;
+    }
+  }
+  .inventual-input-field-file input {
+    @apply hidden;
+  }
+}
+
+//inventual header searchbar action
+@mixin inventualHeaderSearchAction {
+  .inventual-table-header-search-action-btn {
+    & button {
+      @apply h-10;
+      @apply w-10;
+      @apply block;
+      @apply rounded-3;
+      @apply border-1;
+      @apply border-solid;
+      @apply p-0;
+      @apply text-14;
+      @apply leading-38;
+      @apply font-normal;
+      @apply font-primary;
+      @apply inline-block;
+      @apply text-center;
+      @apply ml-2.5;
+      & svg {
+        @apply inline-block;
+      }
+      &.filter {
+        @include widthInherit;
+        @apply border-teal;
+        @apply px-5;
+        @apply text-teal;
+        @apply ml-0;
+        @apply sm:px-4;
+        & svg {
+          @apply mr-1.5;
+        }
+      }
+      &.pdf {
+        @apply border-yellow-light;
+      }
+      &.csv {
+        @apply border-green-lightTwo;
+      }
+      &.printer {
+        @apply border-blue;
+      }
+    }
+  }
+}
+
+//sidebar menu style
+@mixin inventualSidebarMuneStyle {
+  .inventual-dashboard-sidebar {
+    @include transition;
+    max-width: 315px;
+    @apply relative;
+    @apply ml-0;
+    @apply bg-white;
+    @apply z-10;
+    @media (min-width: 1201px) and (max-width: 1400px) {
+      margin-left: -315px;
+    }
+    @media (max-width: 1200px) {
+      margin-left: -300px;
+    }
+    .inventual-header-bar-responsive {
+      @apply absolute;
+      top: 23px;
+      right: -60px;
+      z-index: 11;
+      @apply inline-block;
+      @apply cursor-pointer;
+      @apply text-blue;
+      @apply text-center;
+      @apply h-8;
+      @apply w-8;
+      @apply leading-47;
+      @apply bg-gray-borderThree;
+      @media (max-width: 1200px) {
+        right: -44px;
+      }
+      @media (max-width: 359px) {
+        right: -20px !important;
+      }
+      .mat-icon {
+        line-height: 0px;
+      }
+    }
+  }
+  .inventual-dashboard-main {
+    margin-left: 315px;
+    @include transition;
+    @media (min-width: 1201px) and (max-width: 1400px) {
+      @apply ml-0;
+    }
+    @media (max-width: 1200px) {
+      @apply ml-0;
+    }
+  }
+  .inventual-dashboard-sidebar.sidebar-enable {
+    margin-left: -315px;
+    @media (min-width: 1201px) and (max-width: 1400px) {
+      @apply ml-0;
+    }
+    @media (max-width: 1200px) {
+      @apply ml-0;
+    }
+  }
+  .inventual-dashboard-main.sidebar-enable {
+      @apply ml-0;
+  }
+  .inventual-menu-overlay.sidebar-enable {
+    @media (max-width: 1400px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 10;
+    }
+  }
+}

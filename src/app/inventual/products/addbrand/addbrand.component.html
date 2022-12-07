@@ -1,0 +1,138 @@
+<div class="inventual-dashboard-area">
+  <div
+    class="inventual-dashboard-sidebar"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div
+      class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8"
+    >
+      <app-menu></app-menu>
+    </div>
+    <div
+      class="inventual-menu-overlay"
+      (click)="myfunction()"
+      [class.sidebar-enable]="menuSidebarActive"
+    ></div>
+  </div>
+  <div
+    class="inventual-dashboard-main"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-area">
+      <div
+        class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border"
+      >
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inventual-content-area px-7">
+      <div
+        class="inventual-addbrand-area bg-white p-7 custom-shadow rounded-8 mb-5"
+      >
+        <h4 class="text-20 font-bold text-black mb-9">Agregar Brand</h4>
+        <div class="inventual-managesale-top-btn flex items-center sm:block">
+          <div class="inventual-select-field mb-7 mr-3">
+            <h5 class="text-15 text-black font-semibold mb-3">Crear Tienda</h5>
+            <div class="inventual-input-field-style">
+              <mat-form-field class="w-full" [floatLabel]="'always'">
+                <mat-label class="hidden">HP</mat-label>
+                <input
+                  matInput
+                  [placeholder]="'HP'"
+                  [(ngModel)]="newBrandName"
+                  name="newBrand"
+                  id="newBrand"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="inventual-input-field-style">
+            <div class=" ">
+              <button mat-raised-button color="primary" (click)="createBrand()">
+                Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="stores.length != 0" class="inventual-addbrand-table-area">
+          <div class="inventual-addbrand-table-inner">
+            <div
+              class="inventual-addbrand-table-inner-wrapper border-1 border-solid border-gray-borderThree border-b-0 mb-7"
+            >
+              <div
+                class="inventual-addbrand-table-list flex border-b-1 border-solid border-gray-borderThree h-12"
+              >
+                <div
+                  class="inventual-addbrand-table-checkbox default-light-theme"
+                >
+                  <mat-checkbox class="example-margin"> </mat-checkbox>
+                </div>
+                <div class="inventual-addbrand-table-name">
+                  <h5>Brand Name</h5>
+                </div>
+                <div class="inventual-addbrand-table-action">
+                  <h5>Action</h5>
+                </div>
+              </div>
+              <div
+                class="inventual-addbrand-table-list flex border-b-1 border-solid border-gray-borderThree h-20"
+                *ngFor="let store of stores"
+              >
+                <div
+                  class="inventual-addbrand-table-checkbox default-light-theme"
+                >
+                  <mat-checkbox [color]="'primary'" name="check{{store.id}}">
+                    <label for="mat-checkbox-11-input"></label>
+                  </mat-checkbox>
+                </div>
+                <div class="inventual-addbrand-table-name">
+                  <span>{{store.name}}</span>
+                </div>
+                <div class="inventual-addbrand-table-action">
+                  <button
+                    mat-icon-button
+                    [matMenuTriggerFor]="beforeMenu"
+                    class="common-action-menu-style"
+                    aria-label="Example icon-button with a menu"
+                  >
+                    Action <mat-icon>arrow_drop_down</mat-icon>
+                  </button>
+                  <mat-menu #beforeMenu="matMenu" xPosition="before">
+                    <!-- <button mat-menu-item (click)="">
+                      <img
+                        src="../../../../../assets/img/icon/action-2.png"
+                        alt="icon not found"
+                      />
+                      <span>Edit Brand</span>
+                    </button> -->
+                    <button mat-menu-item (click)="deleteStore(store.id)">
+                      <img
+                        src="../../../../../assets/img/icon/action-6.png"
+                        alt="icon not found"
+                      />
+                      <span>Delete</span>
+                    </button>
+                  </mat-menu>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="inventual-pagination-area">
+            <app-pagination></app-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-copyright-area">
+      <app-copyright></app-copyright>
+    </div>
+  </div>
+</div>

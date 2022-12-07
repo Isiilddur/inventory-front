@@ -1,0 +1,182 @@
+@import '../../../../custom-palettes.scss';
+
+//sidebar menu style
+@include inventualSidebarMuneStyle;
+// Input field style
+@include inventualInputFieldStyle;
+
+.inventual-notification-text {
+    width: calc(100% - 90px);
+}
+.inventual-notification {
+    @include transition;
+    &:hover {
+        @apply bg-white;
+    }
+}
+.inventual-notification-feedback {
+    .mat-raised-button {
+		font-size: 15px !important;
+		font-weight: 600 !important;
+		color: #616161 !important;
+		border-radius: 5px !important;
+		height: 40px !important;
+		line-height: 38px !important;
+		padding: 0px 20px !important;
+		margin-right: 10px !important;
+        border: 1px solid #EFF0F2;
+        background: none !important;
+		@apply sm:mb-1;
+        &:hover {
+            background: #2C6AE5 !important;
+            color: #fff !important;
+            border-color: #2C6AE5 !important;
+        }
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-1.5;
+        font-size: 21px;
+	}
+}
+
+
+
+
+
+.inventual-message-inbox-wrapper {
+	.mat-tab-group {
+		flex-direction: row;
+		max-width: inherit;
+		@media (max-width: 991px) {
+			max-width: 100%;
+			flex-direction: column;
+		}
+	}
+	.mat-tab-labels {
+        display: flex;
+        flex-direction: column;
+        min-width: 260px;
+        text-align: left;
+        background: #fff;
+        border-radius: 5px;
+    }
+    .mat-ink-bar {
+        display: none;
+    }
+    .mat-tab-label {
+        overflow: hidden;
+        min-height: 40px;
+        padding: 0;
+        opacity: 1;
+        text-align: left;
+        justify-content: start;
+        white-space: inherit;
+        max-width: 210px;
+		@apply font-primary;
+		@media (min-width: 320px) and (max-width: 991px) {
+			max-width: 100%;
+		}
+		button {
+			display: block;
+			position: relative;
+			width: 100%;
+			font-size: 16px;
+			font-weight: 600;
+			@apply text-black;
+			text-align: left;
+			height: 48px;
+			line-height: 45px;
+			padding: 0px 14px;
+			border-radius: 5px;
+			.mat-icon {
+				height: 15px !important;
+				width: 15px !important;
+				display: inline;
+				font-size: 20px !important;
+				transform: translateY(4px);
+				display: inline-block;
+				margin-right: 8px;
+				color: #B8C1CF;
+				line-height: 0px !important;
+			}
+			span {
+				float: right;
+			}
+		}
+        &.mat-tab-label-active {
+            button {
+				@apply bg-gray-bgFour;
+				@apply text-blue;
+				.mat-icon {
+					@apply text-blue;
+				}
+			}
+        }
+    }
+	.mat-tab-header {
+		flex-shrink: inherit;
+		@apply border-transparent;
+		@apply font-primary;
+	}
+	.mat-tab-body-wrapper {
+		width: calc(100% - 260px);
+		@apply bg-white;
+		@media (min-width: 320px) and (max-width: 991px) {
+			width: 100%;
+		}
+	}
+	.mat-tab-label .mat-tab-label-content {
+		justify-content: inherit;
+		width: 100%;
+	}
+}
+.inventual-message-inbox-body {
+	overflow: hidden;
+	@media (min-width: 320px) and (max-width: 991px) {
+		margin-top: 24px;
+	}
+}
+.mat-tab-labels {
+	@apply font-primary;
+}
+
+.mat-ripple.mat-tab-header-pagination.mat-tab-header-pagination-before.mat-elevation-z4.mat-tab-header-pagination-disabled {
+	display: none;
+}
+.mat-ripple.mat-tab-header-pagination.mat-tab-header-pagination-after.mat-elevation-z4 {
+	display: none;
+}
+.inventual-manageproduct-top-btn {
+	.mat-raised-button {
+		font-size: 16px !important;
+		font-weight: 700 !important;
+		color: #fff !important;
+		border-radius: 5px !important;
+		height: 48px !important;
+		line-height: 48px !important;
+		padding: 0px 28px !important;
+		margin-right: 16px !important;
+		@apply sm:mb-1;
+		&:last-child {
+			margin-right: 0px !important;
+		}
+	}
+	.mat-button-wrapper {
+		display: flex !important;
+		align-items: center !important;
+	}
+	.mat-icon {
+		width: 20px !important;
+		transform: translateX(-3px) !important;
+		@apply mr-2.5;
+	}
+}

@@ -1,0 +1,78 @@
+<div class="inventual-dashboard-area">
+  <div
+    class="inventual-dashboard-sidebar"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div
+      class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8"
+    >
+      <app-menu></app-menu>
+    </div>
+    <div
+      class="inventual-menu-overlay"
+      (click)="myfunction()"
+      [class.sidebar-enable]="menuSidebarActive"
+    ></div>
+  </div>
+  <div
+    class="inventual-dashboard-main"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-area">
+      <div
+        class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border"
+      >
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="inventual-breadcrumb-area-inner px-0.5">
+        <h5 class="text-20 text-black font-bold mb-3">Trading</h5>
+        <div class="inventual-breadcrumb-area-inner-wrap">
+          <span class="text-14 text-gray font-normal inline-block mr-2"
+            >Trading</span
+          >
+          <span class="text-14 text-gray font-normal inline-block mr-2">></span>
+          <span class="text-14 text-gray font-normal inline-block mr-2"
+            >Sale</span
+          >
+          <span class="text-14 text-gray font-normal inline-block mr-2">></span>
+          <span class="text-14 text-gray font-normal inline-block mr-2"
+            >POS Sale</span
+          >
+        </div>
+      </div>
+    </div>
+    <mat-tab-group>
+      <ng-container *ngFor="let tab of namesTabs;let indexOfelement=index;">
+        <mat-tab label="{{tab.name}}">
+        <ng-template mat-tab-label>
+				<div class="col" style="margin-left: 20px;">{{tab.name}}</div>
+          <button  style="color:black" mat-icon-button (click)="closeTab(indexOfelement)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </ng-template>
+        <app-salereturns (clientSelected)="clientSelected($event, indexOfelement)" ></app-salereturns></mat-tab>
+      </ng-container>
+      <mat-tab disabled>
+        <ng-template mat-tab-label>
+            <button mat-icon-button (click)="addTab()">
+                <mat-icon>add_circle</mat-icon>
+            </button>
+        </ng-template>
+    </mat-tab>
+
+    </mat-tab-group>
+  
+    <div class="inventual-copyright-area">
+      <app-copyright></app-copyright>
+    </div>
+  </div>
+</div>

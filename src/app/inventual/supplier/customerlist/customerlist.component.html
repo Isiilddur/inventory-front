@@ -1,0 +1,99 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-20 text-black font-bold mb-3">Clientes</h5>
+                
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-supplierlist-area bg-white p-7 custom-shadow rounded-8 mb-5">
+               <h4 class="text-20 font-bold text-black mb-9">Lista de Clientes</h4>
+               <div class="inventual-managesale-top-btn default-light-theme mb-7">
+                    <button mat-raised-button color="accent" [routerLink]="['/addcustomer']" class="mb-1"><mat-icon>add</mat-icon>Añadir Cliente</button>
+               </div>
+                <div class="inventual-supplierlist-table-area">
+                    <div class="inventual-supplierlist-table-inner">
+                        <div class="inventual-supplierlist-table-inner-wrapper border-1 border-solid border-gray-borderThree border-b-0 mb-7">
+                            <div class="inventual-supplierlist-table-list flex border-b-1 border-solid border-gray-borderThree h-12">    
+                                <div class="inventual-supplierlist-table-name">
+                                    <h5>Nombre</h5>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <h5>Telefono</h5>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <h5>RFC</h5>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <h5>Status</h5>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <h5>Deuda</h5>
+                                </div>
+                                <div class="inventual-supplierlist-table-action">
+                                    <h5>Acción</h5>
+                                </div>
+                            </div>
+                            <div class="inventual-supplierlist-table-list flex border-b-1 border-solid border-gray-borderThree h-12" *ngFor="let client of clients">
+                                <div class="inventual-supplierlist-table-name">
+                                    <span>{{client.name}}</span>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <span>{{client.phone}}</span>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <span>{{client.rfc ? client.rfc : "-"}}</span>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+
+                                    <h5 *ngIf="clientStatusMap.get(client.id) == null" style="color:green">Sin Adeudo</h5>
+                                    <h5 *ngIf="clientStatusMap.get(client.id)" style="color:red">Con Adeudo</h5>
+                                </div>
+                                <div class="inventual-supplierlist-table-name">
+                                    <span>{{(clientStatusMap.get(client.id)?._sum?.debt ? clientStatusMap.get(client.id)._sum.debt : "0") | currency}}</span>
+                                </div>
+                                <div class="inventual-supplierlist-table-action">
+                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                        Acción <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                        <button mat-button color="primary" (click)="openDialogTwo(client.id)"  class="mb-1"><mat-icon>receipt
+                                        </mat-icon> Ver Ordenes</button>
+                                        <br>
+                                        <button mat-button color="accent" (click)="openDialogOne(client.id)" class="mb-1"><mat-icon>payments</mat-icon> Ver Pagos</button>
+
+                                    </mat-menu>                                      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inventual-pagination-area">
+                        <app-pagination></app-pagination>
+                    </div>
+                </div>
+           </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>

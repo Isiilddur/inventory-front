@@ -1,0 +1,101 @@
+<div class="inventual-dashboard-area">
+    <div class="inventual-dashboard-sidebar" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-bar-responsive" (click)="myfunction()">
+        <mat-icon>reorder</mat-icon>
+      </div>
+      <div class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8">
+        <app-menu></app-menu>
+      </div>
+      <div class="inventual-menu-overlay" (click)="myfunction()" [class.sidebar-enable]="menuSidebarActive"></div>
+    </div>
+    <div class="inventual-dashboard-main" [class.sidebar-enable]="menuSidebarActive">
+      <div class="inventual-header-area">
+        <div class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border">
+          <div class="grid grid-cols-12 items-center h-full">
+            <div class="col-span-12">
+              <app-header></app-header>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+            <div class="inventual-breadcrumb-area-inner px-0.5">
+                <h5 class="text-20 text-black font-bold mb-3">Lista de Productos</h5>
+                
+            </div>
+        </div>
+        <div class="inventual-content-area px-7">
+           <div class="inventual-manageproduct-area bg-white p-7 custom-shadow rounded-8 mb-5">
+            <h4 class="text-20 text-black font-bold mb-3">Lista de Productos</h4>
+            <div class="inventual-manageproduct-top-btn default-light-theme mb-7">
+                    <button mat-raised-button color="accent" [routerLink]="['/addproduct']" class="mb-1"><mat-icon>add</mat-icon> Add Product</button>
+                    
+            </div>
+            
+
+                <div class="inventual-manageproduct-table-area text-center-cols-6 col-span-6">
+                    <div class="inventual-manageproduct-table-inner">
+                        <div class="inventual-manageproduct-table-inner-wrapper border-1 border-solid border-gray-borderThree border-b-0 mb-7">
+                            <div class="inventual-manageproduct-table-list flex border-b-1 border-solid border-gray-borderThree h-12">
+                                <div class="inventual-manageproduct-table-name">
+                                    <h5>Nombre</h5>
+                                </div>
+                                <div class="inventual-manageproduct-table-code">
+                                    <h5>Codigo</h5>
+                                </div>
+                                <div class="inventual-manageproduct-table-category">
+                                    <h5>Categoría</h5>
+                                </div>
+                                <div class="inventual-manageproduct-table-brand">
+                                    <h5>Tienda</h5>
+                                </div>
+                                
+                                <div class="inventual-manageproduct-table-price">
+                                    <h5>Stock</h5>
+                                </div>
+                                <div class="inventual-manageproduct-table-action">
+                                    <h5>Acción</h5>
+                                </div>
+                            </div>
+                            <div *ngFor="let product of products" class="inventual-manageproduct-table-list flex border-b-1 border-solid border-gray-borderThree h-20">
+                                <div class="inventual-manageproduct-table-name">
+                                    <span>{{product.name}}</span>
+                                </div>
+                                <div class="inventual-manageproduct-table-code">
+                                    <span>{{product.id}}</span>
+                                </div>
+                                <div class="inventual-manageproduct-table-category">
+                                    <span>{{categories.get(product.categoryId)}}</span>
+                                </div>
+                                <div class="inventual-manageproduct-table-brand">
+                                    <span>{{stores.get(product.storeId)}}</span>
+                                </div>
+                                <div class="inventual-manageproduct-table-stock">
+                                    <span>{{product.stock + " Kg" }}</span>
+                                </div>
+                                <div class="inventual-manageproduct-table-action">
+                                    <button mat-icon-button [matMenuTriggerFor]="beforeMenu" class="common-action-menu-style" aria-label="Example icon-button with a menu">
+                                        Action <mat-icon>arrow_drop_down</mat-icon>
+                                    </button>
+                                    <mat-menu #beforeMenu="matMenu" xPosition="before">
+                                        <button (click)="incrementarInventario(product.id)" mat-menu-item >
+                                            <span>Incrementar Inventario</span>
+                                        </button>
+                                        <button mat-menu-item  (click)="deleteProduct(product.id)">
+                                            <span>Borrar</span>
+                                        </button>
+                                    </mat-menu>                                      
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+           </div>
+        </div>
+        <div class="inventual-copyright-area">
+            <app-copyright></app-copyright>
+        </div>
+    </div>
+</div>

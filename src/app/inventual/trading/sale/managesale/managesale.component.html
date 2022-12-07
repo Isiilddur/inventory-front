@@ -1,0 +1,180 @@
+<div class="inventual-dashboard-area">
+  <div
+    class="inventual-dashboard-sidebar"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-bar-responsive" (click)="myfunction()">
+      <mat-icon>reorder</mat-icon>
+    </div>
+    <div
+      class="inventual-menu-wrapper bg-white border-r-1 border-b-1 border-solid border-gray-border py-10 px-7 lg:px-5 lg:py-8"
+    >
+      <app-menu></app-menu>
+    </div>
+    <div
+      class="inventual-menu-overlay"
+      (click)="myfunction()"
+      [class.sidebar-enable]="menuSidebarActive"
+    ></div>
+  </div>
+  <div
+    class="inventual-dashboard-main"
+    [class.sidebar-enable]="menuSidebarActive"
+  >
+    <div class="inventual-header-area">
+      <div
+        class="inventual-header-wrapper custom-height-70 px-7 custom-height-70 bg-white border-b-1 border-solid border-gray-border"
+      >
+        <div class="grid grid-cols-12 items-center h-full">
+          <div class="col-span-12">
+            <app-header></app-header>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inventual-breadcrumb-area px-7 py-9 bg-white mb-5">
+      <div class="inventual-breadcrumb-area-inner px-0.5">
+        <h5 class="text-20 text-black font-bold mb-3">Ventas</h5>
+        
+      </div>
+    </div>
+    <div class="inventual-content-area px-7">
+      <div
+        class="inventual-managesale-area bg-white p-7 custom-shadow rounded-8 mb-5"
+      >
+        <h4 class="text-20 font-bold text-black mb-9">Lista Ventas</h4>
+        <div class="inventual-managesale-top-btn default-light-theme mb-7">
+          <button
+            mat-raised-button
+            color="accent"
+            [routerLink]="['/possale']"
+            class="mb-1"
+          >
+            <mat-icon>add</mat-icon> Crear Venta
+          </button>
+        </div>
+        <div class="inventual-managesale-table-area">
+          <div class="inventual-managesale-table-inner">
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              matSort
+              (matSortChange)="announceSortChange($event)"
+              class="mat-elevation-z8"
+            >
+              <!-- Position Column -->
+              <ng-container matColumnDef="storeId">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by storeId"
+                >
+                  Tienda
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  {{ stores.get(element.storeId)  }}
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by name"
+                >
+                  Cliente
+                </th>
+                <td mat-cell *matCellDef="let element">{{ clients.get( element.clientId) }}</td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="status">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by status"
+                >
+                  Status
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <span
+                    ><figure
+                      [class]="
+                        'text-12 font-semibold leading-20 text-white px-2.5 h-5 rounded-3 inline-block ' +
+                        colorStatus[element.status]
+                      "
+                    >
+                      {{ element.status }}
+                    </figure></span
+                  >
+                </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="total">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by total"
+                >
+                  Total
+                </th>
+                <td mat-cell *matCellDef="let element">{{ element.total | currency}}</td>
+              </ng-container>
+              <ng-container matColumnDef="payed">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by total"
+                >
+                  Pagado
+                </th>
+                <td mat-cell *matCellDef="let element">{{ element.payed | currency}}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="date">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  sortActionDescription="Sort by date"
+                >
+                  Fecha
+                </th>
+                <td mat-cell *matCellDef="let element">{{ element.date | date  }}</td>
+              </ng-container>
+              <ng-container matColumnDef="pagos">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                >
+                  Pagos
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <button (click)="addPayment(element.id, element.clientId)" mat-raised-button color="primary">Agregar Pago</button>
+                </td>
+              </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row  *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <mat-paginator
+              [pageSizeOptions]="[10, 20, 30]"
+              showFirstLastButtons
+              aria-label="Select page of periodic elements"
+            >
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+      <div class="inventual-copyright-area">
+        <app-copyright></app-copyright>
+      </div>
+    </div>
+  </div>
+</div>
