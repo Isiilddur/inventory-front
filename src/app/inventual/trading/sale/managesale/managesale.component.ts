@@ -43,6 +43,7 @@ export class ManagesaleComponent implements OnInit,AfterViewInit {
   displayedColumns: string[] = ['storeId', 'name', 'status', 'total', 'payed', 'date', 'pagos'];
   dataSource = new MatTableDataSource(this.orders);
   clients : Map<string | undefined, string> = new Map()
+  
   //checkbox end
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -74,6 +75,7 @@ export class ManagesaleComponent implements OnInit,AfterViewInit {
           this.getOrders()
           this.getClients()
           this.getStores()
+          
         }
   @ViewChild(MatSort)
   sort!: MatSort | null;
@@ -81,9 +83,27 @@ export class ManagesaleComponent implements OnInit,AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+   
   }
-  addPayment(id: string, clientId: string) {
-    this.dialog.open(AddpaymentComponent, {data: {idOrder:id,clientId:clientId}});
+  applyFilter(filterValue: any) {
+    
+    filterValue = filterValue?.target?.value.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    console.log(filterValue);
+
+    this.dataSource.filter = filterValue;
+    console.log(this.clients);
+
+    this.dataSource.filterPredicate = (data: Order, filter: string) => {
+      console.log(this.clients.get(data.clientId), filter);
+      
+      return this.clients.get(data.clientId)!.toLowerCase().trim().includes( filter) ;
+     };
+  }
+  addPayment(id: string, clientId: string, total: number) {
+    console.log(this.clients);
+    
+    this.dialog.open(AddpaymentComponent, {data: {idOrder:id,clientId:clientId, total:total}});
   }
 
   viewPayment() {
@@ -94,7 +114,10 @@ export class ManagesaleComponent implements OnInit,AfterViewInit {
     this.dialog.open(InvoiceComponent);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+    
+  }
 
   getOrders(){
     this.orderService.getOrders().subscribe((resp) => {

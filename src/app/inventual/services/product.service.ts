@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../interfaces/product.interface';
+import { ProductOnOrder } from '../interfaces/productOnOrder.interface';
+
 import { Unit } from '../enums/unit.enum';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -31,4 +33,8 @@ export class ProductService {
   deleteProduct (id : string | undefined) : Observable<Product>{
     return this.http.delete<Product>(`${this.URL}/product/${id}`)
  }
+
+ getProductsOnOrder (id : string | undefined) : Observable<ProductOnOrder[]>{
+  return this.http.get<ProductOnOrder[]>(`${this.URL}/products/order/${id}`)
+}
 }

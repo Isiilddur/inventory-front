@@ -206,9 +206,13 @@ export class PossaleComponent implements OnInit {
      
   }
 
-  clientSelected(event: {name:string}, index: number){
+  clientSelected(event: {name:any}, index: number){
+    console.log("client selectedf");
+    console.log(event, index)
+    
+    
     if(this.namesTabs[index]){
-      this.namesTabs[index].name = event.name
+      this.namesTabs[index].name = event.name.name
     }
     console.log(event);
     

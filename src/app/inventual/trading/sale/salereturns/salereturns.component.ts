@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Status } from 'src/app/inventual/enums/status.enum';
+import { Client } from 'src/app/inventual/interfaces/client.interface';
 import { Item } from 'src/app/inventual/interfaces/item.interface';
 import { Order } from 'src/app/inventual/interfaces/order.interface';
 import { Product } from 'src/app/inventual/interfaces/product.interface';
@@ -110,17 +111,16 @@ export class SalereturnsComponent implements OnInit {
 
    _filter(value: string) {
     console.log(value);
+    if(typeof value === 'string'){
+      const filterValue = value.toLowerCase();
     
-    const filterValue = value.toLowerCase();
-    console.log(filterValue);
     
+      this.filteredOptions = this.clients.filter(client => {      
+        return client.name.toLowerCase().includes(filterValue)}
+      );
+    }
     
-    this.filteredOptions = this.clients.filter(client => {
-      console.log(client);
       
-      return client.name.toLowerCase().includes(filterValue)}
-    );
-          
       
   }
 
@@ -243,17 +243,17 @@ export class SalereturnsComponent implements OnInit {
   }
 
   sendCreateOrder(){
-    console.log(this.myControl.get('client'));
+    console.log(this.myControl.get('client')?.value.id);
     
     this.newOrder.products = this.newItems
-    this.newOrder.clientId = 'asdid'
-    this.orderService.createOrder(this.newOrder).subscribe(resp => {
+    this.newOrder.clientId = this.myControl.get('client')?.value.id
+     this.orderService.createOrder(this.newOrder).subscribe(resp => {
       this.showMessage('Orden generada correctamente', 'success')
       this.resetAll();
 
     }, error => {
       this.showMessage('Error en tu orden', 'error', 'Verifica que todos los campos estén llenos')
-    })  
+    })   
   }
 
   showMessage(title: string, icon: SweetAlertIcon, text?: string){
@@ -268,5 +268,12 @@ export class SalereturnsComponent implements OnInit {
      
   }
 
+  displayFn(user: any): string {
+    console.log("........................");
+    
+    console.log(user);
+    
+    return user.name;
+  }
 
 }

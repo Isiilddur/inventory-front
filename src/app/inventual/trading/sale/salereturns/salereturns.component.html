@@ -14,10 +14,10 @@
                       type="text"
                       [matAutocomplete]="auto"
                     />
-                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="sendTheNewValue($event)">
+                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="sendTheNewValue($event)" [displayWith]="displayFn">
                       <mat-option
                         *ngFor="let client of filteredOptions"
-                        [value]="client.name"
+                        [value]="client"
                         >{{ client.name }}</mat-option
                       >
                     </mat-autocomplete>
